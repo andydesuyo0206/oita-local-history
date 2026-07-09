@@ -4,6 +4,12 @@ subtitle: 府内が「西洋への窓」だった時代
 description: 大友宗麟のもと、豊後府内はポルトガル貿易とキリスト教文化の一大拠点となりました。
 order: 1
 icon: ship
+photo:
+  src: /images/funai-castle.jpg
+  alt: 府内城跡（大分市）
+  credit: 663highland
+  license: CC BY 2.5
+  sourceUrl: https://commons.wikimedia.org/wiki/File:Funai_Castle02n4272.jpg
 spots:
   - name: 大友氏遺跡（大分市）
     note: 南蛮文化の中心だった大友氏の館跡。

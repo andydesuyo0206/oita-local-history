@@ -4,6 +4,12 @@ subtitle: 岩に祈りを刻んだ人々
 description: 国宝・臼杵石仏をはじめ、大分は日本有数の石仏王国。国東半島の磨崖仏とともに、岩に刻まれた祈りをたどります。
 order: 2
 icon: sekibutsu
+photo:
+  src: /images/usuki-sekibutsu.jpg
+  alt: 臼杵石仏・古園石仏の大日如来坐像（国宝）
+  credit: Wiiii
+  license: CC BY-SA 3.0
+  sourceUrl: https://commons.wikimedia.org/wiki/File:Usuki_Stone_Buddhas.jpg
 spots:
   - name: 臼杵石仏（臼杵市)
     note: 国宝・特別史跡の磨崖仏群。

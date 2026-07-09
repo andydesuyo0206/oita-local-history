@@ -4,6 +4,12 @@ subtitle: 「荒城の月」の岡城と中川氏の城下町
 description: 断崖の岡城は国指定史跡・日本百名城。1594年の入封から明治まで、一度も移封なく続いた中川氏の物語。
 order: 4
 icon: castle
+photo:
+  src: /images/oka-castle.jpg
+  alt: 岡城跡の石垣（竹田市）
+  credit: Mukai
+  license: CC BY-SA 3.0
+  sourceUrl: https://commons.wikimedia.org/wiki/File:Bungo_Oka_Castle_2.jpg
 spots:
   - name: 岡城跡
     note: 国指定史跡・日本百名城。「石垣の見本市」と称される多彩な石積みと、瀧廉太郎像が見どころ。

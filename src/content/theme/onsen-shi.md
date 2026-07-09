@@ -4,6 +4,12 @@ subtitle: 「おんせん県」ができるまで
 description: 古代から知られた別府の湯が、港と鉄道の時代を経て日本一の温泉都市になるまでの物語。
 order: 3
 icon: yukemuri
+photo:
+  src: /images/beppu-yukemuri.jpg
+  alt: 湯けむりの立ちのぼる別府の街並み
+  credit: Suicasmo
+  license: CC BY-SA 4.0
+  sourceUrl: https://commons.wikimedia.org/wiki/File:View_of_Beppu_20170217.jpg
 spots:
   - name: 竹瓦温泉（別府市）
     note: 明治12年（1879年）創設の歴史を持つ、別府温泉のシンボル的な共同浴場。

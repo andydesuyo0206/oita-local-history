@@ -4,6 +4,12 @@ subtitle: 官兵衛の水城と福澤諭吉の城下町
 description: 黒田官兵衛が築いた日本三大水城・中津城と、福澤諭吉が19歳まで過ごした城下町。
 order: 5
 icon: castle
+photo:
+  src: /images/nakatsu-castle.jpg
+  alt: 中津城の模擬天守
+  credit: ほっきー
+  license: CC BY-SA 4.0
+  sourceUrl: https://commons.wikimedia.org/wiki/File:%E4%B8%AD%E6%B4%A5%E5%9F%8E%E5%A4%A9%E5%AE%88.jpg
 spots:
   - name: 中津城（奥平家歴史資料館）
     note: 堀に海水が入る日本三大水城のひとつ。天守閣からは城下と周防灘を一望できます。

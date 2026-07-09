@@ -4,6 +4,12 @@ subtitle: 八幡信仰と仏の里
 description: 全国八幡宮の総本宮・宇佐神宮と、山岳仏教が花開いた国東半島の六郷満山。大分の古代史はここから始まります。
 order: 1
 icon: torii
+photo:
+  src: /images/usa-jingu.jpg
+  alt: 宇佐神宮本殿（国宝）
+  credit: sk01
+  license: CC BY-SA 3.0
+  sourceUrl: https://commons.wikimedia.org/wiki/File:%E5%AE%87%E4%BD%90%E7%A5%9E%E5%AE%AE_%E6%9C%AC%E6%AE%BF_-_panoramio.jpg
 spots:
   - name: 宇佐神宮
     note: 全国の八幡宮の総本宮。国宝の本殿は必見。境内は約50万平方メートルと広大です。

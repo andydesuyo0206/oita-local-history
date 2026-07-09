@@ -4,6 +4,12 @@ subtitle: 漁村から温泉都市へ
 description: 明治の港と鉄道、そして「別府観光の父」油屋熊八。漁村が日本一の温泉都市になるまでの物語。
 order: 6
 icon: yukemuri
+photo:
+  src: /images/beppu-yukemuri.jpg
+  alt: 湯けむりの立ちのぼる別府の街並み
+  credit: Suicasmo
+  license: CC BY-SA 4.0
+  sourceUrl: https://commons.wikimedia.org/wiki/File:View_of_Beppu_20170217.jpg
 spots:
   - name: 竹瓦温泉
     note: 1879年（明治12年）に歴史が始まった別府温泉のシンボル。砂湯でも有名です。

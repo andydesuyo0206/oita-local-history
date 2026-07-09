@@ -9,7 +9,7 @@ interface Props {
   kind: '地域' | '主題';
 }
 const { entry, kind } = Astro.props;
-const { title, subtitle, icon, spots, sources } = entry.data;
+const { title, subtitle, icon, spots, sources, photo } = entry.data;
 ---
 
 <article class="container article">
@@ -23,6 +23,21 @@ const { title, subtitle, icon, spots, sources } = entry.data;
       <p class="article-subtitle">{subtitle}</p>
     </div>
   </header>
+
+  {
+    photo && (
+      <figure class="article-photo">
+        <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
+        <figcaption>
+          写真:{' '}
+          <a href={photo.sourceUrl} target="_blank" rel="noopener noreferrer">
+            {photo.credit}
+          </a>
+          （{photo.license}, Wikimedia Commons）
+        </figcaption>
+      </figure>
+    )
+  }
 
   <div class="article-body">
     <slot />
@@ -84,6 +99,23 @@ const { title, subtitle, icon, spots, sources } = entry.data;
     color: var(--shu);
     letter-spacing: 0.12em;
     margin-top: 0.4rem;
+  }
+  .article-photo {
+    margin-top: 2rem;
+  }
+  .article-photo img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    display: block;
+  }
+  .article-photo figcaption {
+    font-size: 0.75rem;
+    color: var(--sumi-usui);
+    margin-top: 0.5rem;
+    text-align: right;
   }
   .article-body {
     padding-top: 2rem;

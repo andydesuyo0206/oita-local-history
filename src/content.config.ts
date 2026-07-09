@@ -7,7 +7,17 @@ const articleSchema = z.object({
   subtitle: z.string(),
   description: z.string(),
   order: z.number().default(0),
-  icon: z.enum(['torii', 'ship', 'sekibutsu', 'castle', 'yukemuri']),
+  icon: z.enum(['torii', 'ship', 'sekibutsu', 'castle', 'yukemuri', 'cross', 'school', 'stadium']),
+  // 記事トップの写真（Wikimedia Commons等。クレジット表記必須）
+  photo: z
+    .object({
+      src: z.string(),
+      alt: z.string(),
+      credit: z.string(),
+      license: z.string(),
+      sourceUrl: z.string().url(),
+    })
+    .optional(),
   // 「訪ねるなら」スポット情報
   spots: z
     .array(z.object({ name: z.string(), note: z.string() }))

@@ -4,6 +4,12 @@ subtitle: 大友宗麟と南蛮文化の都
 description: 戦国時代、南蛮貿易で栄えた国際都市・豊後府内。キリシタン大名・大友宗麟の栄光と挫折の舞台です。
 order: 2
 icon: ship
+photo:
+  src: /images/funai-castle.jpg
+  alt: 府内城跡（大分市）
+  credit: 663highland
+  license: CC BY 2.5
+  sourceUrl: https://commons.wikimedia.org/wiki/File:Funai_Castle02n4272.jpg
 spots:
   - name: 大友氏遺跡（大分市）
     note: 大友氏の館跡。大分市のデジタルアーカイブで往時の姿を知ることができます。
