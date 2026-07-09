@@ -19,7 +19,9 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : un
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="google-site-verification" content="8cukl3bEculrD5uketLON0CczakQ6ncTphp46ltbykg" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="theme-color" content="#b13a2f" />
     {canonical && <link rel="canonical" href={canonical} />}
     <!-- OGP -->
