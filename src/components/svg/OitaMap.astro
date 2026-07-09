@@ -1,0 +1,157 @@
+---
+// 大分県デフォルメ地図：地域を選んで各記事へ飛べるナビゲーション
+// ※正確な県境ではなく、位置関係をデフォルメしたイラスト地図です
+// リンクはSVG内<a>ではなくHTMLオーバーレイ（クリック挙動が全ブラウザで確実なため）
+const VIEW_W = 560;
+const VIEW_H = 440;
+const regions = [
+  { id: 'nakatsu', label: '中津', x: 150, y: 78, href: '/area/nakatsu/' },
+  { id: 'usa-kunisaki', label: '宇佐・国東', x: 330, y: 92, href: '/area/usa-kunisaki/' },
+  { id: 'beppu', label: '別府', x: 340, y: 208, href: '/area/beppu/' },
+  { id: 'funai', label: '府内', x: 408, y: 268, href: '/area/funai/' },
+  { id: 'usuki', label: '臼杵', x: 448, y: 338, href: '/area/usuki/' },
+  { id: 'taketa', label: '竹田', x: 218, y: 330, href: '/area/taketa/' },
+] as const;
+---
+
+<div class="map-wrap">
+  <div class="map-stage">
+    <svg
+      viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="大分県のデフォルメ地図"
+    >
+      <!-- 海（全面を薄く塗り、県土を上に重ねる） -->
+      <rect x="0" y="0" width="560" height="440" fill="var(--shu)" opacity="0.05" />
+
+      <!-- 県土（デフォルメ形状：国東半島の出っ張りと佐賀関の尖りを表現） -->
+      <path
+        d="M60 120
+           Q70 60 140 52
+           Q230 42 280 60
+           Q300 30 360 26
+           Q430 24 448 70
+           Q460 110 420 132
+           Q446 150 452 180
+           Q500 200 490 250
+           L520 268
+           Q500 288 470 284
+           Q490 330 470 370
+           Q440 415 360 412
+           Q250 420 170 400
+           Q90 380 76 300
+           Q64 240 80 190
+           Q56 170 60 120 Z"
+        fill="var(--washi-deep)"
+        stroke="var(--kincha)"
+        stroke-width="2.5"
+      />
+
+      <!-- 波の装飾 -->
+      <path d="M480 120 Q492 114 504 120 T528 120" stroke="var(--kincha)" stroke-width="2" opacity="0.5" />
+      <path d="M498 320 Q510 314 522 320 T546 320" stroke="var(--kincha)" stroke-width="2" opacity="0.5" />
+
+      <!-- 山の装飾（くじゅう・由布岳のイメージ） -->
+      <path d="M250 240 L272 210 L294 240 Z M282 244 L300 220 L318 244 Z" fill="var(--sumi)" opacity="0.15" />
+      <path d="M150 280 L170 254 L190 280 Z" fill="var(--sumi)" opacity="0.12" />
+    </svg>
+
+    <!-- 地域リンク（HTMLオーバーレイ：% 配置でSVGと連動して拡縮） -->
+    {
+      regions.map((r) => (
+        <a
+          href={r.href}
+          class="region-hit"
+          style={`left:${(r.x / VIEW_W) * 100}%; top:${(r.y / VIEW_H) * 100}%`}
+          aria-label={`${r.label}の記事を読む`}
+        >
+          <span class="region-circle" aria-hidden="true" />
+          <span class="region-label">{r.label}</span>
+        </a>
+      ))
+    }
+  </div>
+  <p class="map-note">※ 位置関係をデフォルメしたイラスト地図です。地域を選ぶと記事へ移動します。</p>
+</div>
+
+<style>
+  .map-wrap {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .map-stage {
+    position: relative;
+  }
+  .map-stage svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .region-hit {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    text-decoration: none;
+    /* タップ領域の確保（44px以上） */
+    min-width: 48px;
+    min-height: 48px;
+    justify-content: center;
+  }
+  .region-circle {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    /* 親opacityだと中心ドットまで薄くなるため rgba で塗る（--shu #b13a2f 相当） */
+    background: rgba(177, 58, 47, 0.16);
+    transition: background 0.25s, transform 0.25s;
+    position: relative;
+  }
+  /* 中心の点 */
+  .region-circle::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--shu);
+  }
+  .region-hit:hover .region-circle,
+  .region-hit:focus .region-circle {
+    background: rgba(177, 58, 47, 0.34);
+    transform: scale(1.15);
+  }
+  .region-label {
+    font-family: var(--font-mincho);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: var(--sumi);
+    white-space: nowrap;
+    text-shadow: 0 0 6px var(--washi), 0 0 3px var(--washi);
+  }
+  .region-hit:hover .region-label,
+  .region-hit:focus .region-label {
+    color: var(--shu);
+  }
+  .map-note {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--sumi-usui);
+    margin-top: 0.6rem;
+  }
+  @media (max-width: 600px) {
+    .region-label {
+      font-size: 0.78rem;
+    }
+    .region-circle {
+      width: 28px;
+      height: 28px;
+    }
+  }
+</style>

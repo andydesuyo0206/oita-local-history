@@ -1,0 +1,97 @@
+/* ============================================
+   デザイントークン：和風モダン（和紙 × 墨 × 朱）
+   ============================================ */
+:root {
+  /* 色 */
+  --washi: #f6f1e7;        /* 和紙：ベース背景 */
+  --washi-deep: #ece3d0;   /* 和紙（濃）：セクション背景 */
+  --sumi: #2b2a27;         /* 墨：本文 */
+  --sumi-usui: #5d5a52;    /* 薄墨：補足テキスト */
+  --shu: #b13a2f;          /* 朱：アクセント */
+  --shu-fukai: #8e2a21;    /* 深朱：ホバー */
+  --kincha: #a67c2e;       /* 金茶：サブアクセント */
+  --line: #d8cdb6;         /* 罫線 */
+
+  /* タイポグラフィ */
+  --font-mincho: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  --font-gothic: "Yu Gothic", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--washi);
+  /* 和紙の質感：微細なグラデーションの重ね */
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(166, 124, 46, 0.04), transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(177, 58, 47, 0.03), transparent 50%),
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(43, 42, 39, 0.012) 2px, rgba(43, 42, 39, 0.012) 3px);
+  color: var(--sumi);
+  font-family: var(--font-mincho);
+  line-height: 1.9;
+  letter-spacing: 0.06em;
+  font-size: 16px;
+}
+
+a {
+  color: var(--shu);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+a:hover {
+  color: var(--shu-fukai);
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+img, svg {
+  max-width: 100%;
+}
+
+/* 共通コンテナ */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* スクロール連動フェードイン（data-animate 要素に適用）
+   html.anim はJSが付与する。JSが動かない環境では通常表示のまま（フェイルセーフ） */
+html.anim [data-animate] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+html.anim [data-animate].is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.anim [data-animate] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* 朱の落款風ラベル */
+.rakkan {
+  display: inline-block;
+  background: var(--shu);
+  color: var(--washi);
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  letter-spacing: 0.15em;
+}

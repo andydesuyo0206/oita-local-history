@@ -1,0 +1,165 @@
+---
+// 時代年表：古代 → 中世 → 近世 → 近代 をスクロールでたどる
+import KyodoIcon from './svg/KyodoIcon.astro';
+
+// 各時代のデータ（史実は出典で裏取り済み。詳細は各記事へ）
+const eras = [
+  {
+    period: '古代〜平安',
+    years: '725年〜',
+    title: '八幡信仰と仏の里のはじまり',
+    text: '神亀2年（725年）創建と伝わる宇佐神宮は、全国八幡宮の総本宮。国東半島では六郷満山の寺院群が花開き、平安中期には国宝・富貴寺大堂が建立されます。',
+    icon: 'torii',
+    link: '/area/usa-kunisaki/',
+    linkLabel: '宇佐・国東を読む',
+  },
+  {
+    period: '戦国',
+    years: '16世紀',
+    title: '大友宗麟と南蛮貿易の都・府内',
+    text: '大友宗麟のもと、豊後府内は南蛮貿易で栄える国際都市に。神学校や病院が建ち、西洋文化の中心地となりました。しかし1586年、島津氏の侵攻で灰燼に帰します。',
+    icon: 'ship',
+    link: '/area/funai/',
+    linkLabel: '府内を読む',
+  },
+  {
+    period: '近世',
+    years: '江戸時代',
+    title: '城下町の時代 — 岡城・臼杵・中津',
+    text: '断崖の岡城、磨崖仏の里・臼杵、そして福澤諭吉が育つ中津。それぞれの城下町が独自の文化を育みました。',
+    icon: 'castle',
+    link: '/area/taketa/',
+    linkLabel: '竹田・岡城を読む',
+  },
+  {
+    period: '近代',
+    years: '明治〜',
+    title: '漁村が温泉都市になるまで',
+    text: '1871年の別府港開港、1879年の竹瓦温泉、明治末の鉄道開通。交通が、ひなびた漁村を日本一の温泉都市へと変えていきました。',
+    icon: 'yukemuri',
+    link: '/area/beppu/',
+    linkLabel: '別府を読む',
+  },
+] as const;
+---
+
+<section id="nenpyo" class="timeline">
+  <h2 class="timeline-heading"><span class="rakkan">年表</span> 一千三百年をたどる</h2>
+  <ol class="timeline-list">
+    {
+      eras.map((era) => (
+        <li class="era" data-animate>
+          <div class="era-icon">
+            <KyodoIcon name={era.icon} size={88} />
+          </div>
+          <div class="era-body">
+            <p class="era-period">
+              <span class="era-name">{era.period}</span>
+              <span class="era-years">{era.years}</span>
+            </p>
+            <h3 class="era-title">{era.title}</h3>
+            <p class="era-text">{era.text}</p>
+            <a class="era-link" href={era.link}>
+              {era.linkLabel} →
+            </a>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .timeline-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 2.5rem;
+  }
+  .timeline-list {
+    list-style: none;
+    position: relative;
+    padding-left: 0;
+  }
+  /* 中央を貫く朱の線 */
+  .timeline-list::before {
+    content: '';
+    position: absolute;
+    left: 44px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(var(--shu), var(--kincha));
+    opacity: 0.5;
+  }
+  .era {
+    display: flex;
+    gap: 1.6rem;
+    padding: 1.8rem 0;
+    position: relative;
+  }
+  .era-icon {
+    flex-shrink: 0;
+    background: var(--washi);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    display: grid;
+    place-items: center;
+    z-index: 1;
+  }
+  .era-body {
+    padding-top: 0.4rem;
+  }
+  .era-period {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+  }
+  .era-name {
+    color: var(--shu);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    font-size: 1.05rem;
+  }
+  .era-years {
+    color: var(--sumi-usui);
+    font-size: 0.85rem;
+  }
+  .era-title {
+    font-size: 1.2rem;
+    margin: 0.4rem 0 0.5rem;
+    letter-spacing: 0.08em;
+  }
+  .era-text {
+    color: var(--sumi);
+    font-size: 0.95rem;
+    max-width: 38em;
+  }
+  .era-link {
+    display: inline-block;
+    margin-top: 0.7rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 600px) {
+    .timeline-list::before {
+      left: 32px;
+    }
+    .era {
+      gap: 1rem;
+    }
+    .era-icon {
+      width: 66px;
+      height: 66px;
+    }
+    .era-icon :global(svg) {
+      width: 56px;
+      height: 56px;
+    }
+  }
+</style>

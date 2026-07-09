@@ -1,0 +1,110 @@
+---
+// ヒーロー用パノラマイラスト：大分の歴史風景を一枚に凝縮
+// 左から：鳥居（宇佐）・双耳峰（由布岳）・湯けむり（別府）・石垣（岡城）・海と南蛮船（府内）
+---
+
+<svg
+  class="hero-scene"
+  viewBox="0 0 720 300"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="大分の歴史風景のイラスト：鳥居、由布岳、湯けむり、城の石垣、南蛮船"
+>
+  <!-- 太陽（金茶の落款風） -->
+  <circle cx="600" cy="58" r="30" fill="var(--kincha)" opacity="0.75" />
+
+  <!-- 遠景の山なみ（由布岳の双耳峰を中央に） -->
+  <path d="M0 190 L70 130 L120 175 L200 100 Q212 88 224 100 L236 112 Q248 100 260 112 L340 190 Z" fill="var(--sumi)" opacity="0.16" />
+  <path d="M300 190 L400 120 L480 190 Z" fill="var(--sumi)" opacity="0.10" />
+
+  <!-- 湯けむり（山あいから立ちのぼる） -->
+  <g class="steam">
+    <path d="M330 180 Q322 160 330 145 Q338 130 330 110" stroke="var(--sumi-usui)" stroke-width="4" stroke-linecap="round" opacity="0.5" />
+    <path d="M352 185 Q344 162 352 145 Q360 128 352 105" stroke="var(--sumi-usui)" stroke-width="4" stroke-linecap="round" opacity="0.4" />
+    <path d="M374 182 Q366 162 374 148 Q382 134 374 116" stroke="var(--sumi-usui)" stroke-width="4" stroke-linecap="round" opacity="0.5" />
+  </g>
+
+  <!-- 鳥居（左手前） -->
+  <g>
+    <path d="M40 130 Q95 120 150 130 L147 141 Q95 132 43 141 Z" fill="var(--shu)" />
+    <rect x="52" y="148" width="86" height="7" fill="var(--shu)" />
+    <rect x="62" y="141" width="10" height="82" fill="var(--shu)" transform="rotate(1.5 67 182)" />
+    <rect x="118" y="141" width="10" height="82" fill="var(--shu)" transform="rotate(-1.5 123 182)" />
+    <rect x="90" y="130" width="10" height="18" fill="var(--shu)" />
+  </g>
+
+  <!-- 石垣と城のシルエット（右中景） -->
+  <g>
+    <path d="M470 225 L482 175 L560 175 L572 225 Z" fill="var(--sumi)" opacity="0.85" />
+    <path d="M486 188 L556 188 M480 200 L562 200 M475 212 L567 212" stroke="var(--washi)" stroke-width="1.6" opacity="0.4" />
+    <path d="M492 175 L500 158 L542 158 L550 175 Z" fill="var(--sumi)" opacity="0.6" />
+  </g>
+
+  <!-- 海 -->
+  <path d="M0 226 Q360 214 720 226 L720 300 L0 300 Z" fill="var(--shu)" opacity="0.08" />
+  <g class="waves">
+    <path d="M20 244 Q35 238 50 244 T80 244 T110 244" stroke="var(--kincha)" stroke-width="2" opacity="0.6" />
+    <path d="M540 252 Q555 246 570 252 T600 252 T630 252 T660 252" stroke="var(--kincha)" stroke-width="2" opacity="0.6" />
+    <path d="M250 258 Q265 252 280 258 T310 258" stroke="var(--kincha)" stroke-width="2" opacity="0.45" />
+  </g>
+
+  <!-- 南蛮船（海上・ゆらゆら揺れる） -->
+  <g class="ship">
+    <path d="M600 218 Q650 228 700 218 L689 240 Q650 248 612 240 Z" fill="var(--sumi)" />
+    <rect x="626" y="164" width="4" height="54" fill="var(--sumi)" />
+    <rect x="664" y="152" width="4" height="66" fill="var(--sumi)" />
+    <path d="M630 166 Q648 175 630 192 Z" fill="var(--washi-deep)" stroke="var(--sumi)" stroke-width="1.6" />
+    <path d="M668 154 Q692 168 668 192 Z" fill="var(--shu)" opacity="0.9" />
+    <path d="M668 154 L668 192 L646 192 Q656 172 668 154 Z" fill="var(--washi-deep)" stroke="var(--sumi)" stroke-width="1.4" />
+  </g>
+
+  <!-- 地面のライン -->
+  <path d="M0 224 Q180 216 400 224" stroke="var(--line)" stroke-width="2.5" fill="none" />
+</svg>
+
+<style>
+  .hero-scene {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  /* 湯けむり：ゆっくり立ちのぼる揺らぎ */
+  .steam path {
+    animation: steam-sway 4.5s ease-in-out infinite;
+    transform-origin: bottom center;
+  }
+  .steam path:nth-child(2) {
+    animation-delay: -1.5s;
+  }
+  .steam path:nth-child(3) {
+    animation-delay: -3s;
+  }
+  @keyframes steam-sway {
+    0%, 100% { transform: translateX(0) scaleY(1); opacity: 0.5; }
+    50% { transform: translateX(3px) scaleY(1.06); opacity: 0.3; }
+  }
+  /* 南蛮船：波に揺れる */
+  .ship {
+    animation: ship-bob 6s ease-in-out infinite;
+    transform-origin: 650px 230px;
+  }
+  @keyframes ship-bob {
+    0%, 100% { transform: translateY(0) rotate(0.6deg); }
+    50% { transform: translateY(-4px) rotate(-0.8deg); }
+  }
+  /* 波：ゆっくり漂う */
+  .waves {
+    animation: waves-drift 7s ease-in-out infinite;
+  }
+  @keyframes waves-drift {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(8px); }
+  }
+  /* 動きを減らす設定を尊重する */
+  @media (prefers-reduced-motion: reduce) {
+    .steam path, .ship, .waves {
+      animation: none;
+    }
+  }
+</style>

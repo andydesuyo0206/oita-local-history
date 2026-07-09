@@ -1,0 +1,62 @@
+---
+// 記事一覧用カード（地域・テーマ共通）
+import KyodoIcon from './svg/KyodoIcon.astro';
+
+interface Props {
+  href: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  icon: 'torii' | 'ship' | 'sekibutsu' | 'castle' | 'yukemuri';
+}
+const { href, title, subtitle, description, icon } = Astro.props;
+---
+
+<a class="article-card" href={href}>
+  <div class="card-icon">
+    <KyodoIcon name={icon} size={64} />
+  </div>
+  <div class="card-body">
+    <h3 class="card-title">{title}</h3>
+    <p class="card-subtitle">{subtitle}</p>
+    <p class="card-desc">{description}</p>
+  </div>
+</a>
+
+<style>
+  .article-card {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.2rem;
+    text-decoration: none;
+    color: var(--sumi);
+    background: rgba(255, 255, 255, 0.35);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .article-card:hover {
+    border-color: var(--shu);
+    transform: translateY(-2px);
+    color: var(--sumi);
+  }
+  .card-icon {
+    flex-shrink: 0;
+  }
+  .card-title {
+    font-size: 1.15rem;
+    letter-spacing: 0.12em;
+  }
+  .card-subtitle {
+    color: var(--shu);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    margin: 0.15rem 0 0.4rem;
+  }
+  .card-desc {
+    font-size: 0.85rem;
+    color: var(--sumi-usui);
+    line-height: 1.7;
+  }
+</style>

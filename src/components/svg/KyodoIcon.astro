@@ -1,0 +1,63 @@
+---
+// 郷土史イラストSVG：name で切り替える自作アイコン集
+// torii=宇佐神宮の鳥居 / ship=南蛮船 / sekibutsu=磨崖仏 / castle=岡城の石垣と月 / yukemuri=別府の湯けむり
+interface Props {
+  name: 'torii' | 'ship' | 'sekibutsu' | 'castle' | 'yukemuri';
+  size?: number;
+}
+const { name, size = 96 } = Astro.props;
+---
+
+{name === 'torii' && (
+  <svg width={size} height={size} viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="鳥居のイラスト">
+    <path d="M8 22 Q48 14 88 22 L86 30 Q48 23 10 30 Z" fill="var(--shu)" />
+    <rect x="16" y="36" width="64" height="5" fill="var(--shu)" />
+    <rect x="24" y="30" width="7" height="56" fill="var(--shu)" transform="rotate(1.5 27 58)" />
+    <rect x="65" y="30" width="7" height="56" fill="var(--shu)" transform="rotate(-1.5 68 58)" />
+    <rect x="44" y="22" width="8" height="14" fill="var(--shu)" />
+    <ellipse cx="48" cy="88" rx="36" ry="2.5" fill="var(--line)" />
+  </svg>
+)}
+
+{name === 'ship' && (
+  <svg width={size} height={size} viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="南蛮船のイラスト">
+    <path d="M14 62 Q48 70 82 62 L74 78 Q48 84 22 78 Z" fill="var(--sumi)" />
+    <rect x="30" y="24" width="3" height="38" fill="var(--sumi)" />
+    <rect x="58" y="16" width="3" height="46" fill="var(--sumi)" />
+    <path d="M33 26 Q46 32 33 44 Z" fill="var(--washi-deep)" stroke="var(--sumi)" stroke-width="1.5" />
+    <path d="M61 18 Q78 28 61 44 Z" fill="var(--washi-deep)" stroke="var(--sumi)" stroke-width="1.5" />
+    <path d="M61 18 L61 44 L44 44 Q52 30 61 18 Z" fill="var(--shu)" opacity="0.9" />
+    <path d="M10 70 Q20 66 30 70 T50 70 T70 70 T90 70" stroke="var(--kincha)" stroke-width="2" fill="none" />
+  </svg>
+)}
+
+{name === 'sekibutsu' && (
+  <svg width={size} height={size} viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="磨崖仏のイラスト">
+    <path d="M12 88 L12 30 Q30 8 48 10 Q70 8 84 30 L84 88 Z" fill="var(--washi-deep)" stroke="var(--line)" stroke-width="2" />
+    <circle cx="48" cy="38" r="12" fill="var(--sumi)" />
+    <circle cx="48" cy="24" r="4" fill="var(--sumi)" />
+    <path d="M30 74 Q34 52 48 52 Q62 52 66 74 Z" fill="var(--sumi)" />
+    <path d="M40 62 Q48 66 56 62" stroke="var(--washi)" stroke-width="1.5" fill="none" />
+    <ellipse cx="48" cy="84" rx="26" ry="3" fill="var(--line)" />
+  </svg>
+)}
+
+{name === 'castle' && (
+  <svg width={size} height={size} viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="岡城の石垣と月のイラスト">
+    <circle cx="70" cy="24" r="12" fill="var(--kincha)" opacity="0.85" />
+    <path d="M14 88 L22 52 L74 52 L82 88 Z" fill="var(--sumi)" />
+    <path d="M24 62 L72 62 M20 72 L76 72 M17 81 L79 81" stroke="var(--washi)" stroke-width="1.5" opacity="0.5" />
+    <path d="M28 52 L34 40 L62 40 L68 52 Z" fill="var(--sumi)" opacity="0.7" />
+    <path d="M6 90 Q48 86 90 90" stroke="var(--line)" stroke-width="2" fill="none" />
+  </svg>
+)}
+
+{name === 'yukemuri' && (
+  <svg width={size} height={size} viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="温泉と湯けむりのイラスト">
+    <path d="M20 66 Q48 58 76 66 L72 82 Q48 88 24 82 Z" fill="var(--shu)" />
+    <path d="M34 54 Q28 44 34 36 Q40 28 34 18" stroke="var(--sumi-usui)" stroke-width="3" fill="none" stroke-linecap="round" />
+    <path d="M48 52 Q42 42 48 34 Q54 26 48 14" stroke="var(--sumi-usui)" stroke-width="3" fill="none" stroke-linecap="round" />
+    <path d="M62 54 Q56 44 62 36 Q68 28 62 18" stroke="var(--sumi-usui)" stroke-width="3" fill="none" stroke-linecap="round" />
+    <ellipse cx="48" cy="88" rx="34" ry="2.5" fill="var(--line)" />
+  </svg>
+)}

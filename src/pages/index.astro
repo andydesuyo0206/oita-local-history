@@ -1,0 +1,171 @@
+---
+// トップページ：ヒーロー + 時代年表 + 地域/テーマ一覧
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Timeline from '../components/Timeline.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import HeroScene from '../components/svg/HeroScene.astro';
+import OitaMap from '../components/svg/OitaMap.astro';
+
+const areas = (await getCollection('area')).sort((a, b) => a.data.order - b.data.order);
+const themes = (await getCollection('theme')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base title="豊の国・大分 郷土史 — 一千三百年の物語">
+  <!-- ヒーロー -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1 class="hero-title">豊の国、<br />一千三百年の物語。</h1>
+        <p class="hero-lead">
+          八幡信仰のはじまりから、南蛮船の来航、城下町の栄え、そして湯けむりの都市へ。
+          ふるさと大分の歴史を、イラストとともにたどる読み物サイトです。
+        </p>
+        <a class="hero-cta" href="#nenpyo">年表からたどる ↓</a>
+      </div>
+      <div class="hero-tate" aria-hidden="true">
+        <p>豊後・豊前</p>
+      </div>
+    </div>
+    <div class="container hero-scene-wrap">
+      <HeroScene />
+    </div>
+  </section>
+
+  <!-- 年表 -->
+  <div class="container section">
+    <Timeline />
+  </div>
+
+  <!-- 地域から探す -->
+  <section id="chiiki" class="section-band">
+    <div class="container section">
+      <h2 class="section-heading"><span class="rakkan">地域</span> 地域から探す</h2>
+      <div data-animate>
+        <OitaMap />
+      </div>
+      <div class="card-grid map-margin">
+        {
+          areas.map((a) => (
+            <ArticleCard
+              href={`/area/${a.id}/`}
+              title={a.data.title}
+              subtitle={a.data.subtitle}
+              description={a.data.description}
+              icon={a.data.icon}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- テーマで読む -->
+  <div id="tema" class="container section">
+    <h2 class="section-heading"><span class="rakkan">主題</span> テーマで読む</h2>
+    <div class="card-grid">
+      {
+        themes.map((t) => (
+          <ArticleCard
+            href={`/theme/${t.id}/`}
+            title={t.data.title}
+            subtitle={t.data.subtitle}
+            description={t.data.description}
+            icon={t.data.icon}
+          />
+        ))
+      }
+    </div>
+  </div>
+</Base>
+
+<style>
+  .hero {
+    border-bottom: 1px solid var(--line);
+    background:
+      radial-gradient(ellipse at 85% 20%, rgba(177, 58, 47, 0.07), transparent 55%),
+      var(--washi);
+  }
+  .hero-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    padding-top: 4.5rem;
+    padding-bottom: 1.5rem;
+    gap: 2rem;
+  }
+  .hero-scene-wrap {
+    padding-bottom: 2.5rem;
+  }
+  .map-margin {
+    margin-top: 2.5rem;
+  }
+  .hero-title {
+    font-size: clamp(1.9rem, 5vw, 3rem);
+    letter-spacing: 0.14em;
+    line-height: 1.6;
+  }
+  .hero-lead {
+    margin-top: 1.6rem;
+    max-width: 34em;
+    color: var(--sumi-usui);
+  }
+  .hero-cta {
+    display: inline-block;
+    margin-top: 2rem;
+    border: 1px solid var(--shu);
+    color: var(--shu);
+    text-decoration: none;
+    padding: 0.6rem 1.4rem;
+    border-radius: 3px;
+    letter-spacing: 0.12em;
+    font-size: 0.9rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .hero-cta:hover {
+    background: var(--shu);
+    color: var(--washi);
+  }
+  /* 縦書きの装飾 */
+  .hero-tate {
+    writing-mode: vertical-rl;
+    font-size: 1.1rem;
+    letter-spacing: 0.5em;
+    color: var(--kincha);
+    border-left: 1px solid var(--line);
+    padding-left: 1.2rem;
+    align-self: center;
+  }
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+  }
+  .section-band {
+    background: var(--washi-deep);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 2rem;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.2rem;
+  }
+  @media (max-width: 600px) {
+    .hero-tate {
+      display: none;
+    }
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

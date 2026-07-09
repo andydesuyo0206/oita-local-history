@@ -1,0 +1,23 @@
+---
+// テーマ詳細ページ
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ArticleDetail from '../../components/ArticleDetail.astro';
+
+export async function getStaticPaths() {
+  const themes = await getCollection('theme');
+  return themes.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Base title={`${entry.data.title} — 豊の国・大分 郷土史`} description={entry.data.description}>
+  <ArticleDetail entry={entry} kind="主題">
+    <Content />
+  </ArticleDetail>
+</Base>

@@ -1,0 +1,47 @@
+---
+// 「訪ねるなら」スポット情報カード
+interface Props {
+  name: string;
+  note: string;
+}
+const { name, note } = Astro.props;
+---
+
+<div class="spot-card">
+  <div class="spot-pin" aria-hidden="true">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2 C7.5 2 4 5.6 4 10 C4 16 12 22 12 22 C12 22 20 16 20 10 C20 5.6 16.5 2 12 2 Z" fill="var(--shu)" />
+      <circle cx="12" cy="10" r="3.2" fill="var(--washi)" />
+    </svg>
+  </div>
+  <div>
+    <p class="spot-name">{name}</p>
+    <p class="spot-note">{note}</p>
+  </div>
+</div>
+
+<style>
+  .spot-card {
+    display: flex;
+    gap: 0.7rem;
+    align-items: flex-start;
+    background: var(--washi-deep);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.9rem 1rem;
+  }
+  .spot-pin {
+    flex-shrink: 0;
+    margin-top: 0.35rem;
+  }
+  .spot-name {
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+  .spot-note {
+    font-size: 0.85rem;
+    color: var(--sumi-usui);
+    line-height: 1.7;
+    margin-top: 0.2rem;
+  }
+</style>

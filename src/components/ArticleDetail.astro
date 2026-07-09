@@ -1,0 +1,145 @@
+---
+// 記事詳細の共通表示：見出し + 本文 + 「訪ねるなら」+ 出典
+import type { CollectionEntry } from 'astro:content';
+import KyodoIcon from './svg/KyodoIcon.astro';
+import SpotCard from './SpotCard.astro';
+
+interface Props {
+  entry: CollectionEntry<'area'> | CollectionEntry<'theme'>;
+  kind: '地域' | '主題';
+}
+const { entry, kind } = Astro.props;
+const { title, subtitle, icon, spots, sources } = entry.data;
+---
+
+<article class="container article">
+  <header class="article-header">
+    <div class="header-icon">
+      <KyodoIcon name={icon} size={110} />
+    </div>
+    <div>
+      <p class="article-kind"><span class="rakkan">{kind}</span></p>
+      <h1 class="article-title">{title}</h1>
+      <p class="article-subtitle">{subtitle}</p>
+    </div>
+  </header>
+
+  <div class="article-body">
+    <slot />
+  </div>
+
+  {
+    spots.length > 0 && (
+      <section class="spots">
+        <h2 class="spots-heading">訪ねるなら</h2>
+        <div class="spots-grid">
+          {spots.map((s) => (
+            <SpotCard name={s.name} note={s.note} />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <section class="sources">
+    <h2 class="sources-heading">出典</h2>
+    <ul>
+      {
+        sources.map((s) => (
+          <li>
+            <a href={s.url} target="_blank" rel="noopener noreferrer">
+              {s.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <p class="back-link"><a href="/">← トップへ戻る</a></p>
+</article>
+
+<style>
+  .article {
+    padding-top: 3.5rem;
+  }
+  .article-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .header-icon {
+    flex-shrink: 0;
+  }
+  .article-kind {
+    margin-bottom: 0.6rem;
+  }
+  .article-title {
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    letter-spacing: 0.15em;
+  }
+  .article-subtitle {
+    color: var(--shu);
+    letter-spacing: 0.12em;
+    margin-top: 0.4rem;
+  }
+  .article-body {
+    padding-top: 2rem;
+    max-width: 42em;
+  }
+  .article-body :global(p) {
+    margin-bottom: 1.4em;
+  }
+  .article-body :global(strong) {
+    color: var(--shu-fukai);
+    font-weight: 600;
+  }
+  .article-body :global(ul) {
+    margin: 0 0 1.4em 1.4em;
+  }
+  .spots {
+    margin-top: 2.5rem;
+  }
+  .spots-heading,
+  .sources-heading {
+    font-size: 1.15rem;
+    letter-spacing: 0.2em;
+    border-left: 4px solid var(--shu);
+    padding-left: 0.7rem;
+    margin-bottom: 1.2rem;
+  }
+  .spots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  .sources {
+    margin-top: 3rem;
+    background: var(--washi-deep);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.4rem 1.6rem;
+  }
+  .sources ul {
+    list-style: none;
+  }
+  .sources li {
+    font-size: 0.88rem;
+    padding: 0.25rem 0;
+  }
+  .back-link {
+    margin-top: 2.5rem;
+  }
+  @media (max-width: 600px) {
+    .article-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .spots-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
