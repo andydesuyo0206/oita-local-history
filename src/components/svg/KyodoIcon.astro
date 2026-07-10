@@ -16,7 +16,8 @@ interface Props {
     | 'taimatsu'
     | 'mizushiro'
     | 'saka'
-    | 'yamajiro';
+    | 'yamajiro'
+    | 'yufudake';
   size?: number;
 }
 const { name, size = 96 } = Astro.props;
@@ -63,6 +64,17 @@ const { name, size = 96 } = Astro.props;
     <path d="M24 62 L72 62 M20 72 L76 72 M17 81 L79 81" stroke="var(--washi)" stroke-width="1.5" opacity="0.5" />
     <path d="M28 52 L34 40 L62 40 L68 52 Z" fill="var(--sumi)" opacity="0.7" />
     <path d="M6 90 Q48 86 90 90" stroke="var(--line)" stroke-width="2" fill="none" />
+  </svg>
+)}
+
+{name === 'yufudake' && (
+  <svg width={size} height={size} viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="由布岳と金鱗湖のイラスト">
+    <path d="M12 62 L36 26 Q40 21 44 27 L48 33 L52 26 Q56 20 60 26 L84 62 Z" fill="var(--sumi)" opacity="0.45" />
+    <path d="M40 32 L44 38 L48 33 L52 39 L56 32 L58 36 L48 44 L38 36 Z" fill="var(--washi)" opacity="0.7" />
+    <circle cx="76" cy="18" r="6" fill="var(--kincha)" opacity="0.75" />
+    <ellipse cx="48" cy="74" rx="30" ry="9" fill="var(--shu)" opacity="0.25" />
+    <path d="M28 74 Q38 70 48 74 T68 74" stroke="var(--shu)" stroke-width="2.5" fill="none" stroke-linecap="round" />
+    <path d="M56 66 L56 74 M52 68 L60 68" stroke="var(--sumi)" stroke-width="2" stroke-linecap="round" />
   </svg>
 )}
 

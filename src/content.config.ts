@@ -20,6 +20,7 @@ const articleSchema = z.object({
     'mizushiro',
     'saka',
     'yamajiro',
+    'yufudake',
   ]),
   // 記事トップの写真（Wikimedia Commons等。クレジット表記必須）
   photo: z

@@ -1,21 +1,25 @@
 ---
-// 大分県デフォルメ地図：地域を選んで各記事へ飛べるナビゲーション
-// ※正確な県境ではなく、位置関係をデフォルメしたイラスト地図です
-// リンクはSVG内<a>ではなくHTMLオーバーレイ（クリック挙動が全ブラウザで確実なため）
+// 大分県地図：地域を選んで各記事へ飛べるナビゲーション
+// 県境は実際のGeoJSONポリゴンを簡略化して生成（scripts/generate-map-path.mjs）
+// ノード座標も実際の緯度経度から算出。リンクはHTMLオーバーレイ（クリック挙動が確実なため）
 const VIEW_W = 560;
 const VIEW_H = 440;
 const regions = [
-  { id: 'nakatsu', label: '中津', x: 145, y: 85, href: '/area/nakatsu/' },
-  { id: 'usa-kunisaki', label: '宇佐・国東', x: 340, y: 88, href: '/area/usa-kunisaki/' },
-  { id: 'kitsuki', label: '杵築', x: 390, y: 140, href: '/area/kitsuki/' },
-  { id: 'hita', label: '日田', x: 125, y: 235, href: '/area/hita/' },
-  { id: 'beppu', label: '別府', x: 322, y: 200, href: '/area/beppu/' },
-  { id: 'yufuin', label: '由布院', x: 272, y: 222, href: '/area/yufuin/' },
-  { id: 'funai', label: '府内', x: 400, y: 242, href: '/area/funai/' },
-  { id: 'usuki', label: '臼杵', x: 422, y: 300, href: '/area/usuki/' },
-  { id: 'taketa', label: '竹田', x: 235, y: 330, href: '/area/taketa/' },
-  { id: 'saiki', label: '佐伯', x: 398, y: 372, href: '/area/saiki/' },
+  { id: 'nakatsu', label: '中津', x: 190, y: 66, href: '/area/nakatsu/', labelPos: 'bottom' },
+  { id: 'usa-kunisaki', label: '宇佐・国東', x: 278, y: 81, href: '/area/usa-kunisaki/', labelPos: 'bottom' },
+  { id: 'kitsuki', label: '杵築', x: 334, y: 139, href: '/area/kitsuki/', labelPos: 'bottom' },
+  { id: 'hita', label: '日田', x: 107, y: 178, href: '/area/hita/', labelPos: 'bottom' },
+  { id: 'beppu', label: '別府', x: 292, y: 193, href: '/area/beppu/', labelPos: 'top' },
+  { id: 'yufuin', label: '由布院', x: 251, y: 201, href: '/area/yufuin/', labelPos: 'bottom' },
+  { id: 'funai', label: '府内', x: 333, y: 211, href: '/area/funai/', labelPos: 'bottom' },
+  { id: 'usuki', label: '臼杵', x: 398, y: 257, href: '/area/usuki/', labelPos: 'bottom' },
+  { id: 'taketa', label: '竹田', x: 261, y: 318, href: '/area/taketa/', labelPos: 'bottom' },
+  { id: 'saiki', label: '佐伯', x: 430, y: 323, href: '/area/saiki/', labelPos: 'bottom' },
 ] as const;
+
+// 実県境から生成したパス（許容誤差約1.2km）
+const OITA_PATH =
+  'M310 34.3 L315.3 30.3 L320.4 35 L323.8 28 L337.2 37.1 L340.9 32.2 L359.8 48.8 L376.2 81 L375.6 119.8 L363.5 143.1 L338.3 137.9 L345.4 152.2 L327.7 157.7 L326.3 167.2 L312.4 166.2 L307.9 158.9 L294.8 161.9 L299 198.9 L325.1 208.3 L339.4 197.6 L353.1 202.4 L351.3 196.5 L357.2 199.9 L359.6 194.7 L382.3 210.4 L380.9 205.5 L420.7 206.9 L430.8 199.2 L395.7 256.1 L411.5 260.9 L430.1 253.1 L435.2 256.9 L414.2 271.5 L417.6 276.9 L433.6 274.2 L434.2 280.5 L444 268.4 L444.4 278.9 L454.8 282.3 L464.4 268.5 L469.1 283.8 L440 286.2 L426.5 310.6 L450 329.2 L450.3 323.4 L455.2 322 L457.6 331.8 L464.9 323.9 L465 334.6 L475.2 331.7 L474.9 325.9 L492.6 334.4 L473.2 333.2 L466.7 345.3 L456.2 338.4 L459.4 352.3 L469 351.5 L444.5 373.6 L451.5 380.4 L458.6 369.5 L466.6 376.5 L454.3 391.3 L448.6 385 L442.4 394 L436.8 387.8 L431 393.9 L426.7 386.1 L428.7 402 L421.4 391.7 L425.2 409.8 L420.7 412 L411.2 409.4 L416 379.3 L394.1 379.1 L385.5 372.4 L375.2 374.7 L365.4 399.4 L326.1 398 L317.6 406.4 L299.6 400.4 L300.9 387.8 L286.6 373 L247.6 386.4 L215.3 356 L209.2 324 L215.1 316.9 L198.8 285.1 L185 273.6 L180.3 250.5 L159.8 231.5 L123.6 233.4 L118.8 250.6 L134.2 272 L122.4 297.8 L72.2 266.5 L88.1 232 L70.9 222 L78.4 214.6 L67.4 211.5 L68.8 203.4 L81.5 199.4 L76.3 195.1 L77.9 175.4 L70.5 168.8 L87.8 154.1 L90.8 127.3 L101.2 122.8 L101.2 114.5 L136.3 98.2 L186 102.4 L188.7 58.8 L209 60.8 L223.7 74 L271.6 75.9 L269.3 68.6 L284.6 60.4 L294.6 37.1 Z';
 ---
 
 <div class="map-wrap">
@@ -25,51 +29,24 @@ const regions = [
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
-      aria-label="大分県のデフォルメ地図"
+      aria-label="大分県の地図"
     >
       <!-- 海（全面を薄く塗り、県土を上に重ねる） -->
       <rect x="0" y="0" width="560" height="440" fill="var(--shu)" opacity="0.05" />
 
-      <!-- 県土（実形状ベースのデフォルメ：北岸→丸い国東半島→別府湾の湾入→
-           佐賀関の細い岬→南部リアス海岸→内陸県境の順に描画） -->
+      <!-- 県土（実際の県境ポリゴンを簡略化したパス） -->
       <path
-        d="M105 95
-           Q160 72 225 70
-           Q250 66 268 72
-           C290 30 360 12 415 40
-           C452 62 462 105 442 138
-           Q430 155 410 162
-           Q368 172 346 190
-           Q352 212 388 214
-           L505 194
-           Q512 199 505 204
-           L448 226
-           Q454 252 444 264
-           Q462 274 456 294
-           Q443 307 453 322
-           Q466 340 451 357
-           Q436 364 443 380
-           Q449 402 426 414
-           Q360 427 300 417
-           Q230 404 185 400
-           Q130 394 118 352
-           Q95 302 92 252
-           Q88 192 98 142
-           Q100 112 105 95 Z"
+        d={OITA_PATH}
         fill="var(--washi-deep)"
         stroke="var(--kincha)"
         stroke-width="2.5"
         stroke-linejoin="round"
       />
 
-      <!-- 波の装飾（周防灘・別府湾・豊後水道） -->
-      <path d="M300 38 Q312 32 324 38 T348 38" stroke="var(--kincha)" stroke-width="2" opacity="0.5" />
-      <path d="M488 130 Q500 124 512 130 T536 130" stroke="var(--kincha)" stroke-width="2" opacity="0.5" />
-      <path d="M492 320 Q504 314 516 320 T540 320" stroke="var(--kincha)" stroke-width="2" opacity="0.5" />
-
-      <!-- 山の装飾（由布岳の双耳峰とくじゅう連山のイメージ） -->
-      <path d="M268 195 L282 173 L292 187 L300 175 L312 195 Z" fill="var(--sumi)" opacity="0.15" />
-      <path d="M170 300 L190 272 L210 300 Z M200 304 L216 282 L232 304 Z" fill="var(--sumi)" opacity="0.12" />
+      <!-- 波の装飾（周防灘・伊予灘・豊後水道） -->
+      <path d="M120 44 Q132 38 144 44 T168 44" stroke="var(--kincha)" stroke-width="2" opacity="0.5" />
+      <path d="M470 140 Q482 134 494 140 T518 140" stroke="var(--kincha)" stroke-width="2" opacity="0.5" />
+      <path d="M500 250 Q512 244 524 250 T548 250" stroke="var(--kincha)" stroke-width="2" opacity="0.5" />
     </svg>
 
     <!-- 地域リンク（HTMLオーバーレイ：% 配置でSVGと連動して拡縮） -->
@@ -77,7 +54,7 @@ const regions = [
       regions.map((r) => (
         <a
           href={r.href}
-          class="region-hit"
+          class={`region-hit ${r.labelPos === 'top' ? 'label-top' : ''}`}
           style={`left:${(r.x / VIEW_W) * 100}%; top:${(r.y / VIEW_H) * 100}%`}
           aria-label={`${r.label}の記事を読む`}
         >
@@ -87,7 +64,7 @@ const regions = [
       ))
     }
   </div>
-  <p class="map-note">※ 位置関係をデフォルメしたイラスト地図です。地域を選ぶと記事へ移動します。</p>
+  <p class="map-note">※ 実際の県境をもとに簡略化した地図です。地域を選ぶと記事へ移動します。</p>
 </div>
 
 <style>
@@ -140,6 +117,10 @@ const regions = [
   .region-hit:focus .region-circle {
     background: rgba(177, 58, 47, 0.34);
     transform: scale(1.15);
+  }
+  /* ラベルをドットの上に出す（別府など、下だと他ノードと重なる場合） */
+  .region-hit.label-top {
+    flex-direction: column-reverse;
   }
   .region-label {
     font-family: var(--font-mincho);

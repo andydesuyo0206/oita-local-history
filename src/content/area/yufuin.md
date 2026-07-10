@@ -3,7 +3,7 @@ title: 由布院
 subtitle: 「保養温泉地」を選んだ盆地の物語
 description: 巨大観光開発に頼らず、音楽祭・映画祭・辻馬車で町を育てた由布院。日本のまちづくり史に残る温泉地です。
 order: 10
-icon: yukemuri
+icon: yufudake
 photo:
   src: /images/yufuin-kinrinko.jpg
   alt: 金鱗湖（由布院温泉）
