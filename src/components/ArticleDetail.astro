@@ -125,6 +125,11 @@ const { title, subtitle, icon, spots, sources, photo } = entry.data;
   }
   .article-body :global(p) {
     margin-bottom: 1.4em;
+    /* 長文本文のみ両端揃え（行が十分長く、字間の伸びが目立たないため） */
+    text-align: justify;
+  }
+  .article-body :global(li) {
+    text-align: justify;
   }
   .article-body :global(strong) {
     color: var(--shu-fukai);
