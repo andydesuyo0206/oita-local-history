@@ -60,9 +60,11 @@ h1, h2, h3 {
 
 p {
   /* 日本語組版：両端揃えで行末を揃え、折返しの不自然さを解消する。
-     line-break: strict で小書き仮名・長音符などの行頭配置を禁止（禁則処理） */
+     line-break: strict で小書き仮名・長音符などの行頭配置を禁止（禁則処理）。
+     word-break: auto-phrase で「湯けむり」等の語の途中分断を防ぐ（対応ブラウザのみ） */
   text-align: justify;
   line-break: strict;
+  word-break: auto-phrase;
   /* 段落末尾の一文字だけの行（泣き別れ）を抑制（対応ブラウザのみ有効） */
   text-wrap: pretty;
 }
@@ -70,6 +72,7 @@ p {
 li {
   text-align: justify;
   line-break: strict;
+  word-break: auto-phrase;
 }
 
 /* スマホ：字間を少し詰めて不自然な折返しを減らす */

@@ -82,16 +82,15 @@ const OITA_PATH =
   }
   .region-hit {
     position: absolute;
+    /* 点（円）の中心を正確に座標へ置く。ラベルは絶対配置でぶら下げ、
+       アンカーの中心計算に影響させない（ずれの原因になるため） */
     transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.15rem;
+    display: grid;
+    place-items: center;
     text-decoration: none;
     /* タップ領域の確保（44px以上） */
-    min-width: 48px;
-    min-height: 48px;
-    justify-content: center;
+    width: 48px;
+    height: 48px;
   }
   .region-circle {
     width: 34px;
@@ -118,17 +117,22 @@ const OITA_PATH =
     background: rgba(177, 58, 47, 0.34);
     transform: scale(1.15);
   }
-  /* ラベルをドットの上に出す（別府など、下だと他ノードと重なる場合） */
-  .region-hit.label-top {
-    flex-direction: column-reverse;
-  }
   .region-label {
+    position: absolute;
+    top: calc(100% - 8px);
+    left: 50%;
+    transform: translateX(-50%);
     font-family: var(--font-mincho);
     font-size: 0.85rem;
     letter-spacing: 0.1em;
     color: var(--sumi);
     white-space: nowrap;
     text-shadow: 0 0 6px var(--washi), 0 0 3px var(--washi);
+  }
+  /* ラベルを点の上側に出す場合 */
+  .region-hit.label-top .region-label {
+    top: auto;
+    bottom: calc(100% - 8px);
   }
   .region-hit:hover .region-label,
   .region-hit:focus .region-label {
