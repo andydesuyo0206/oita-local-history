@@ -5,15 +5,16 @@
 const VIEW_W = 560;
 const VIEW_H = 440;
 const regions = [
-  { id: 'nakatsu', label: '中津', x: 150, y: 78, href: '/area/nakatsu/' },
-  { id: 'usa-kunisaki', label: '宇佐・国東', x: 330, y: 92, href: '/area/usa-kunisaki/' },
-  { id: 'kitsuki', label: '杵築', x: 408, y: 160, href: '/area/kitsuki/' },
-  { id: 'hita', label: '日田', x: 118, y: 210, href: '/area/hita/' },
-  { id: 'beppu', label: '別府', x: 322, y: 208, href: '/area/beppu/' },
-  { id: 'funai', label: '府内', x: 400, y: 268, href: '/area/funai/' },
-  { id: 'usuki', label: '臼杵', x: 448, y: 338, href: '/area/usuki/' },
-  { id: 'taketa', label: '竹田', x: 218, y: 330, href: '/area/taketa/' },
-  { id: 'saiki', label: '佐伯', x: 400, y: 390, href: '/area/saiki/' },
+  { id: 'nakatsu', label: '中津', x: 145, y: 85, href: '/area/nakatsu/' },
+  { id: 'usa-kunisaki', label: '宇佐・国東', x: 340, y: 88, href: '/area/usa-kunisaki/' },
+  { id: 'kitsuki', label: '杵築', x: 390, y: 140, href: '/area/kitsuki/' },
+  { id: 'hita', label: '日田', x: 125, y: 235, href: '/area/hita/' },
+  { id: 'beppu', label: '別府', x: 322, y: 200, href: '/area/beppu/' },
+  { id: 'yufuin', label: '由布院', x: 272, y: 222, href: '/area/yufuin/' },
+  { id: 'funai', label: '府内', x: 400, y: 242, href: '/area/funai/' },
+  { id: 'usuki', label: '臼杵', x: 422, y: 300, href: '/area/usuki/' },
+  { id: 'taketa', label: '竹田', x: 235, y: 330, href: '/area/taketa/' },
+  { id: 'saiki', label: '佐伯', x: 398, y: 372, href: '/area/saiki/' },
 ] as const;
 ---
 
@@ -29,36 +30,46 @@ const regions = [
       <!-- 海（全面を薄く塗り、県土を上に重ねる） -->
       <rect x="0" y="0" width="560" height="440" fill="var(--shu)" opacity="0.05" />
 
-      <!-- 県土（デフォルメ形状：国東半島の出っ張りと佐賀関の尖りを表現） -->
+      <!-- 県土（実形状ベースのデフォルメ：北岸→丸い国東半島→別府湾の湾入→
+           佐賀関の細い岬→南部リアス海岸→内陸県境の順に描画） -->
       <path
-        d="M60 120
-           Q70 60 140 52
-           Q230 42 280 60
-           Q300 30 360 26
-           Q430 24 448 70
-           Q460 110 420 132
-           Q446 150 452 180
-           Q500 200 490 250
-           L520 268
-           Q500 288 470 284
-           Q490 330 470 370
-           Q440 415 360 412
-           Q250 420 170 400
-           Q90 380 76 300
-           Q64 240 80 190
-           Q56 170 60 120 Z"
+        d="M105 95
+           Q160 72 225 70
+           Q250 66 268 72
+           C290 30 360 12 415 40
+           C452 62 462 105 442 138
+           Q430 155 410 162
+           Q368 172 346 190
+           Q352 212 388 214
+           L505 194
+           Q512 199 505 204
+           L448 226
+           Q454 252 444 264
+           Q462 274 456 294
+           Q443 307 453 322
+           Q466 340 451 357
+           Q436 364 443 380
+           Q449 402 426 414
+           Q360 427 300 417
+           Q230 404 185 400
+           Q130 394 118 352
+           Q95 302 92 252
+           Q88 192 98 142
+           Q100 112 105 95 Z"
         fill="var(--washi-deep)"
         stroke="var(--kincha)"
         stroke-width="2.5"
+        stroke-linejoin="round"
       />
 
-      <!-- 波の装飾 -->
-      <path d="M480 120 Q492 114 504 120 T528 120" stroke="var(--kincha)" stroke-width="2" opacity="0.5" />
-      <path d="M498 320 Q510 314 522 320 T546 320" stroke="var(--kincha)" stroke-width="2" opacity="0.5" />
+      <!-- 波の装飾（周防灘・別府湾・豊後水道） -->
+      <path d="M300 38 Q312 32 324 38 T348 38" stroke="var(--kincha)" stroke-width="2" opacity="0.5" />
+      <path d="M488 130 Q500 124 512 130 T536 130" stroke="var(--kincha)" stroke-width="2" opacity="0.5" />
+      <path d="M492 320 Q504 314 516 320 T540 320" stroke="var(--kincha)" stroke-width="2" opacity="0.5" />
 
-      <!-- 山の装飾（くじゅう・由布岳のイメージ） -->
-      <path d="M250 240 L272 210 L294 240 Z M282 244 L300 220 L318 244 Z" fill="var(--sumi)" opacity="0.15" />
-      <path d="M150 280 L170 254 L190 280 Z" fill="var(--sumi)" opacity="0.12" />
+      <!-- 山の装飾（由布岳の双耳峰とくじゅう連山のイメージ） -->
+      <path d="M268 195 L282 173 L292 187 L300 175 L312 195 Z" fill="var(--sumi)" opacity="0.15" />
+      <path d="M170 300 L190 272 L210 300 Z M200 304 L216 282 L232 304 Z" fill="var(--sumi)" opacity="0.12" />
     </svg>
 
     <!-- 地域リンク（HTMLオーバーレイ：% 配置でSVGと連動して拡縮） -->

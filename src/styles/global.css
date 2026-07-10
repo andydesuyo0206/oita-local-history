@@ -53,6 +53,21 @@ a:hover {
 h1, h2, h3 {
   font-weight: 600;
   line-height: 1.5;
+  /* 見出しの行分割を均等に。日本語は文節単位で折り返す（対応ブラウザのみ有効） */
+  text-wrap: balance;
+  word-break: auto-phrase;
+}
+
+p {
+  /* 段落末尾の一文字だけの行（泣き別れ）を抑制（対応ブラウザのみ有効） */
+  text-wrap: pretty;
+}
+
+/* スマホ：字間を少し詰めて不自然な折返しを減らす */
+@media (max-width: 600px) {
+  body {
+    letter-spacing: 0.035em;
+  }
 }
 
 img, svg {
