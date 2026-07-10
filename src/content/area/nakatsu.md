@@ -3,7 +3,7 @@ title: 中津
 subtitle: 官兵衛の水城と福澤諭吉の城下町
 description: 黒田官兵衛が築いた日本三大水城・中津城と、福澤諭吉が19歳まで過ごした城下町。
 order: 5
-icon: castle
+icon: mizushiro
 photo:
   src: /images/nakatsu-castle.jpg
   alt: 中津城の模擬天守

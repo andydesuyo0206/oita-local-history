@@ -3,7 +3,7 @@ title: 佐伯
 subtitle: 海に開かれた毛利二万石の城下町
 description: 関ヶ原の後、毛利高政が築いた県南の城下町。山頂の石垣が残る佐伯城は続日本100名城です。
 order: 7
-icon: castle
+icon: yamajiro
 photo:
   src: /images/saiki-castle.jpg
   alt: 佐伯城跡の石垣

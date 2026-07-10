@@ -3,7 +3,7 @@ title: 杵築
 subtitle: 日本唯一「サンドイッチ型」城下町
 description: 南北の高台に武家屋敷、谷間に商人の町。松平氏三万二千石が築いた、他に類を見ない立体的な城下町です。
 order: 9
-icon: castle
+icon: saka
 photo:
   src: /images/kitsuki-suyanosaka.jpg
   alt: 酢屋の坂から塩屋の坂を望む（杵築市）

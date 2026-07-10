@@ -7,7 +7,20 @@ const articleSchema = z.object({
   subtitle: z.string(),
   description: z.string(),
   order: z.number().default(0),
-  icon: z.enum(['torii', 'ship', 'sekibutsu', 'castle', 'yukemuri', 'cross', 'school', 'stadium', 'taimatsu']),
+  icon: z.enum([
+    'torii',
+    'ship',
+    'sekibutsu',
+    'castle',
+    'yukemuri',
+    'cross',
+    'school',
+    'stadium',
+    'taimatsu',
+    'mizushiro',
+    'saka',
+    'yamajiro',
+  ]),
   // 記事トップの写真（Wikimedia Commons等。クレジット表記必須）
   photo: z
     .object({
