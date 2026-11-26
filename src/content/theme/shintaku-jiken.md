@@ -12,7 +12,7 @@ photo:
   sourceUrl: https://commons.wikimedia.org/wiki/File:%E5%AE%87%E4%BD%90%E7%A5%9E%E5%AE%AE_%E6%9C%AC%E6%AE%BF_-_panoramio.jpg
 spots:
   - name: 宇佐神宮
-    note: 神託事件の舞台。境内には和気清麻呂ゆかりの顕彰も残ります。
+    note: 神託事件の舞台となった、八幡総本宮。
 sources:
   - label: 和気清麻呂とご神託（宇佐神宮公式）
     url: http://www.usajinguu.com/wake/

@@ -22,6 +22,8 @@ sources:
     url: https://kodo.jac1.or.jp/kodo120_detail/109_kunisaki2/
   - label: 六郷満山について（豊後高田市公式）
     url: https://www.city.bungotakada.oita.jp/site/bunkazai/2105.html
+  - label: 臼杵磨崖仏（Wikipedia）
+    url: https://ja.wikipedia.org/wiki/%E8%87%BC%E6%9D%B5%E7%A3%A8%E5%B4%96%E4%BB%8F
 ---
 
 大分は、日本有数の**石仏王国**です。その頂点に立つのが臼杵市の**臼杵石仏（臼杵磨崖仏）**。崖に直接彫り込まれた磨崖仏の一群で、**国宝**かつ**特別史跡**という全国でも希少な二重指定を受けています。

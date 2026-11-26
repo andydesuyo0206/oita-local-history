@@ -22,6 +22,10 @@ sources:
     url: https://online.bunka.go.jp/heritages/detail/162638
   - label: 大分の文化史跡・遺跡（じゃらんnet）
     url: https://www.jalan.net/kankou/440000/g2_30/
+  - label: 岡城跡（国土交通省 地域観光資源の多言語解説文データベース）
+    url: https://www.mlit.go.jp/tagengo-db/en/R5-00404.html
+  - label: 瀧廉太郎（同データベース）
+    url: https://www.mlit.go.jp/tagengo-db/R5-00410.html
 ---
 
 県南西部・竹田市のシンボルが、断崖の上にそびえる**岡城跡**です。**国指定史跡**であり**日本百名城**にも数えられます。建物は残っていませんが、多彩な技法を集めた石垣群は「**石垣の見本市**」とも称される壮観です。

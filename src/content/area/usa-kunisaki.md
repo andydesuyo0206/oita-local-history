@@ -24,6 +24,8 @@ sources:
     url: https://www.city.bungotakada.oita.jp/site/bunkazai/2105.html
   - label: 国指定文化財一覧（大分県）
     url: https://www.pref.oita.jp/kyoiku/tmp/bunka/post-101/1.pdf
+  - label: 六郷満山（Wikipedia）
+    url: https://ja.wikipedia.org/wiki/%E5%85%AD%E9%83%B7%E6%BA%80%E5%B1%B1
 ---
 
 大分の歴史をさかのぼると、たどり着くのは県北部・宇佐の地です。**宇佐神宮**は神亀2年（725年）に創建されたと伝わる、全国におよそ4万社ある八幡宮の総本宮。本殿は国宝に指定されており、約50万平方メートルの広大な境内には森と池が広がります。

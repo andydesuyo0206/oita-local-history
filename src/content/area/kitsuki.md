@@ -22,6 +22,8 @@ sources:
     url: https://www.mlit.go.jp/tagengo-db/H30-01320.html
   - label: 和装で楽しむ、城下町杵築散策（大分県観光情報公式サイト）
     url: https://www.visit-oita.jp/magazines/detail/612
+  - label: 杵築藩（Wikipedia）
+    url: https://ja.wikipedia.org/wiki/%E6%9D%B5%E7%AF%89%E8%97%A9
 ---
 
 国東半島の南の付け根に位置する杵築は、江戸時代、**松平氏32,000石**の城下町として、国東半島の政治・経済の中心でした。

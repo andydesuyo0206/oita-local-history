@@ -22,6 +22,12 @@ sources:
     url: https://online.bunka.go.jp/heritages/detail/149871
   - label: 国宝 臼杵石仏（大分県観光情報公式サイト）
     url: https://www.visit-oita.jp/spots/detail/4643
+  - label: 臼杵磨崖仏（Wikipedia）
+    url: https://ja.wikipedia.org/wiki/%E8%87%BC%E6%9D%B5%E7%A3%A8%E5%B4%96%E4%BB%8F
+  - label: 臼杵城（Wikipedia）
+    url: https://ja.wikipedia.org/wiki/%E8%87%BC%E6%9D%B5%E5%9F%8E
+  - label: 大分県の一村一品運動による地域の活性化（政府広報 Highlighting Japan）
+    url: https://www.gov-online.go.jp/eng/publicity/book/hlj/html/202402/202402_06_jp.html
 ---
 
 大分県南東部の臼杵市には、日本の石仏文化を代表する**臼杵石仏（臼杵磨崖仏）**があります。崖の岩肌に直接彫り込まれた磨崖仏の一群で、古園石仏の**大日如来像**に代表される仏たちは、仏像の様式から**平安時代後期から鎌倉時代にかけて**彫られたと推定されています。

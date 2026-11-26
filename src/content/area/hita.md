@@ -24,6 +24,8 @@ sources:
     url: https://www.visit-oita.jp/spots/detail/4530
   - label: 天領まつりと掛屋（草野本家）
     url: https://kusanohonke.jp/open_information/tenryo_festival.html
+  - label: 日田市（Wikipedia）
+    url: https://ja.wikipedia.org/wiki/%E6%97%A5%E7%94%B0%E5%B8%82
 ---
 
 県西部の日田は、江戸時代、**幕府直轄地（天領）**として栄えた町です。特筆すべきはその格の高さ——九州の天領で**幕府派遣の代官が常駐したのは、長崎と日田だけ**でした。
