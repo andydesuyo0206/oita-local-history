@@ -7,13 +7,13 @@ const VIEW_H = 440;
 const regions = [
   // 海沿いの町（中津・杵築・臼杵）は実座標だと点が海岸線に重なるため、視認性優先で少し内陸へ
   { id: 'nakatsu', label: '中津', x: 202, y: 79, href: '/area/nakatsu/', labelPos: 'bottom' },
-  { id: 'usa-kunisaki', label: '宇佐・国東', x: 278, y: 81, href: '/area/usa-kunisaki/', labelPos: 'bottom' },
+  { id: 'usa-kunisaki', label: '宇佐・国東', x: 278, y: 81, href: '/area/usa-kunisaki/', labelPos: 'right' }, // 5文字と長く、中津・別府のラベルと衝突するため右（海側の空き）へ
   { id: 'kitsuki', label: '杵築', x: 316, y: 146, href: '/area/kitsuki/', labelPos: 'right' },
   { id: 'hita', label: '日田', x: 107, y: 178, href: '/area/hita/', labelPos: 'bottom' },
   { id: 'beppu', label: '別府', x: 280, y: 196, href: '/area/beppu/', labelPos: 'top' },
   { id: 'yufuin', label: '由布院', x: 242, y: 210, href: '/area/yufuin/', labelPos: 'bottom' },
   { id: 'funai', label: '府内', x: 333, y: 211, href: '/area/funai/', labelPos: 'bottom' },
-  { id: 'usuki', label: '臼杵', x: 386, y: 262, href: '/area/usuki/', labelPos: 'bottom' },
+  { id: 'usuki', label: '臼杵', x: 386, y: 262, href: '/area/usuki/', labelPos: 'right' }, // 真下だと佐伯の点に触れ、左だと府内のラベルと衝突するため右（海側）へ
   { id: 'taketa', label: '竹田', x: 261, y: 318, href: '/area/taketa/', labelPos: 'bottom' },
   { id: 'saiki', label: '佐伯', x: 422, y: 320, href: '/area/saiki/', labelPos: 'bottom' },
 ] as const;
