@@ -4,6 +4,12 @@ subtitle: 千二百年続く六郷満山の火祭り
 description: 松明の炎の中、鬼が堂内を舞う旧正月の行事。国東半島に千二百年伝わる、神仏習合の祈りのかたちです。
 order: 7
 icon: taimatsu
+photo:
+  src: /images/shujo-onie.jpg
+  alt: 松明を交差させて舞う鬼たちと、見守る人々（豊後高田市の修正鬼会）
+  credit: Bpcon98
+  license: CC0
+  sourceUrl: https://commons.wikimedia.org/wiki/File:Shujo_Onie_%28Bungotakada%29.jpg
 spots:
   - name: 天念寺（豊後高田市）
     note: 毎年旧暦1月7日に修正鬼会を開催。川中不動と長岩屋の岩峰群も見どころ。

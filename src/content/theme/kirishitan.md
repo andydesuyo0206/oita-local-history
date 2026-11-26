@@ -4,6 +4,12 @@ subtitle: 世界を歩いた豊後の信徒たち
 description: 宗麟の保護で栄えた信仰は、禁教の時代に苛烈な試練を迎えます。ペトロ岐部と伊東マンショ、ふたりの生涯から。
 order: 4
 icon: cross
+photo:
+  src: /images/ito-mancio.jpg
+  alt: 伊東マンショの肖像（ドメニコ・ティントレット作、1585年）
+  credit: Domenico Tintoretto（Wikimedia Commons。顔まわりを切り出して掲載）
+  license: Public domain
+  sourceUrl: https://commons.wikimedia.org/wiki/File:Portrait_of_Ito_Mancio.jpg
 spots:
   - name: ペトロ・カスイ岐部記念公園（国東市国見町）
     note: 岐部神父の生誕地。1967年から毎年秋に「岐部殉教祭」が行われています。
