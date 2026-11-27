@@ -1,8 +1,9 @@
 ---
-// 時代年表：古代 → 中世 → 近世 → 近代 をスクロールでたどる
+// 時代年表：古代〜平安 → 戦国 → 近世 → 近代 → 現代 をスクロールでたどる
 import KyodoIcon from './svg/KyodoIcon.astro';
 
-// 各時代のデータ（史実は出典で裏取り済み。詳細は各記事へ）
+// 各時代のデータ（史実は各記事の出典で裏取り済み。詳細は各記事へ）
+// link／linkLabel：その時代の中心となる記事。more：あわせて読みたい関連記事
 const eras = [
   {
     period: '古代〜平安',
@@ -12,6 +13,11 @@ const eras = [
     icon: 'torii',
     link: '/area/usa-kunisaki/',
     linkLabel: '宇佐・国東を読む',
+    more: [
+      { href: '/theme/shintaku-jiken/', label: '宇佐八幡宮神託事件' },
+      { href: '/theme/sekibutsu/', label: '石仏と磨崖仏の文化' },
+      { href: '/theme/shujo-onie/', label: '修正鬼会' },
+    ],
   },
   {
     period: '戦国',
@@ -21,24 +27,36 @@ const eras = [
     icon: 'ship',
     link: '/area/funai/',
     linkLabel: '府内を読む',
+    more: [
+      { href: '/theme/nanban-boeki/', label: '南蛮貿易とキリシタン文化' },
+      { href: '/theme/kirishitan/', label: 'キリシタンの光と影' },
+    ],
   },
   {
     period: '近世',
     years: '江戸時代',
-    title: '城下町の時代 — 岡城・臼杵・中津',
-    text: '断崖の岡城、磨崖仏の里・臼杵、そして福澤諭吉が育つ中津。それぞれの城下町が独自の文化を育みました。',
+    title: '城下町の時代',
+    text: '一度も移封されなかった中川氏の岡城、九州の天領・日田、日本唯一といわれる「サンドイッチ型」の杵築、福澤諭吉が育った中津。それぞれの城下町が、独自の文化を育みました。',
     icon: 'castle',
     link: '/area/taketa/',
     linkLabel: '竹田・岡城を読む',
+    more: [
+      { href: '/area/hita/', label: '日田' },
+      { href: '/area/kitsuki/', label: '杵築' },
+      { href: '/area/nakatsu/', label: '中津' },
+      { href: '/area/usuki/', label: '臼杵' },
+      { href: '/area/saiki/', label: '佐伯' },
+    ],
   },
   {
     period: '近代',
     years: '明治〜',
     title: '漁村が温泉都市になるまで',
-    text: '1871年の別府港開港、1879年の竹瓦温泉、明治末の鉄道開通。交通が、ひなびた漁村を日本一の温泉都市へと変えていきました。',
+    text: '1871年の旧・別府港の誕生、1879年の竹瓦温泉、明治末の鉄道開通。交通が、ひなびた漁村を日本一の温泉都市へと変えていきました。',
     icon: 'yukemuri',
     link: '/area/beppu/',
     linkLabel: '別府を読む',
+    more: [{ href: '/theme/onsen-shi/', label: '温泉の歴史' }],
   },
   {
     period: '現代',
@@ -48,6 +66,7 @@ const eras = [
     icon: 'stadium',
     link: '/theme/gendai/',
     linkLabel: '現代の大分を読む',
+    more: [{ href: '/area/yufuin/', label: '由布院' }],
   },
 ] as const;
 ---
@@ -71,6 +90,16 @@ const eras = [
             <a class="era-link" href={era.link}>
               {era.linkLabel} →
             </a>
+            {
+              era.more.length > 0 && (
+                <p class="era-more">
+                  <span class="era-more-label">あわせて：</span>
+                  {era.more.map((m) => (
+                    <a href={m.href}>{m.label}</a>
+                  ))}
+                </p>
+              )
+            }
           </div>
         </li>
       ))
@@ -154,6 +183,20 @@ const eras = [
     display: inline-block;
     margin-top: 0.7rem;
     font-size: 0.9rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* 関連記事：小さめのリンクを折り返しながら並べる */
+  .era-more {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.2rem 0.9rem;
+    margin-top: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--sumi-usui);
+  }
+  .era-more-label {
     letter-spacing: 0.08em;
   }
 
